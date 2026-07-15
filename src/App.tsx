@@ -364,45 +364,43 @@ export default function App() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-auto md:auto-rows-[115px] lg:auto-rows-[130px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-[18px] md:items-start">
           {bentoItems.map((item) => {
             
-            // Grid sizing logic
-            let gridClasses = "col-span-1 row-span-1";
-            if (item.size === "large") {
-              gridClasses = "col-span-1 md:col-span-2 md:row-span-2";
-            } else if (item.size === "wide") {
-              gridClasses = "col-span-1 md:col-span-2 row-span-1";
-            } else if (item.size === "medium") {
-              gridClasses = "col-span-1 row-span-1 md:row-span-2";
+            // Grid sizing logic for desktop (2 columns with balanced widths)
+            let gridClasses = "col-span-1";
+            if (item.id === "aba") {
+              gridClasses = "col-span-1 md:col-span-2";
+            } else {
+              gridClasses = "col-span-1 md:col-span-1";
             }
 
             return (
               <div 
                 key={item.id}
                 id={`bento-${item.id}`}
-                className={`relative rounded-xl p-4 md:p-5 glass-card border border-border-subtle/30 glass-card-hover overflow-hidden flex flex-col justify-between ${gridClasses}`}
+                className={`relative rounded-xl p-4 md:p-[20px_22px] glass-card border border-border-subtle/30 glass-card-hover overflow-hidden md:overflow-visible flex flex-col justify-between md:justify-start h-auto md:h-auto ${gridClasses}`}
               >
                 {/* Subtle colorful gradient bg in bento */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.colorClass} pointer-events-none z-0 opacity-20`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.colorClass} pointer-events-none z-0 opacity-20 rounded-xl`} />
                 
                 {/* Bento Header */}
-                <div className="relative z-10 flex items-start justify-between">
+                <div className="relative z-10 flex items-start justify-between md:mb-5">
                   <div className="p-2 rounded-lg bg-bg-primary/40 border border-border-subtle/40">
                     {getIconComponent(item.icon)}
                   </div>
                   {item.badge && (
-                    <span className="px-2 py-0.5 rounded-full bg-bg-primary/40 border border-border-subtle/40 text-text-body text-[9px] font-mono uppercase tracking-wider">
+                    <span className="px-2 py-0.5 rounded-full bg-bg-primary/40 border border-border-subtle/40 text-text-body text-[9px] md:text-[10px] font-mono uppercase tracking-wider">
                       {item.badge}
                     </span>
                   )}
                 </div>
 
                 {/* Bento Content */}
-                <div className="relative z-10 mt-3 md:mt-auto">
-                  <p className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-brand-accent/90 mb-0.5">{item.subtitle}</p>
-                  <h3 className="font-display text-sm md:text-base text-text-title font-medium mb-1 leading-snug">{item.title}</h3>
-                  <p className="text-text-body text-[11px] md:text-xs leading-relaxed line-clamp-2 md:line-clamp-3">
+                <div className="relative z-10 mt-3 md:mt-0 flex flex-col justify-start">
+                  <p className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-brand-accent/90 mb-0.5 md:mb-[8px]">{item.subtitle}</p>
+                  <h3 className="font-display text-sm md:text-lg text-text-title font-medium mb-1 md:mb-[8px] leading-snug md:leading-normal">{item.title}</h3>
+                  <p className="text-text-body text-[11px] md:text-sm leading-relaxed md:leading-relaxed line-clamp-2 md:line-clamp-none">
                     {item.description}
                   </p>
                 </div>

@@ -256,7 +256,7 @@ export default function App() {
       {/* HERO SECTION */}
       <section 
         id="inicio"
-        className="relative min-h-screen flex items-end md:items-center justify-start overflow-hidden pt-32 pb-20 md:py-32 z-10 bg-bg-primary"
+        className="relative min-h-screen md:min-h-screen flex flex-col md:flex-row md:items-center md:justify-start overflow-hidden pt-0 md:pt-32 pb-16 md:pb-32 z-10 bg-bg-primary"
       >
         {/* DESKTOP BACKGROUND (md and up) */}
         <div className="absolute inset-0 z-0 hidden md:block pointer-events-none">
@@ -272,14 +272,20 @@ export default function App() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent z-1" />
         </div>
 
-        {/* MOBILE BACKGROUND (hidden on desktop) */}
-        <div className="hero-mobile-bg-container md:hidden">
-          <div className="hero-background" />
-          <div className="hero-overlay" />
+        {/* MOBILE IMAGE CONTAINER (hidden on desktop) */}
+        <div className="w-full h-[70svh] relative md:hidden z-0 overflow-hidden">
+          <img 
+            src={lauraHeroMobileImage} 
+            alt="Psicóloga Laura Barbizan Barichello" 
+            className="w-full h-full object-cover object-[center_10%]"
+            referrerPolicy="no-referrer"
+          />
+          {/* Soft fade at the bottom of the photo to transition elegantly to the beige area */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-bg-primary to-transparent z-1 pointer-events-none" />
         </div>
 
         {/* Content Container (Perfectly positioned on both desktop and mobile) */}
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col pt-8 md:pt-0">
           <div className="max-w-xl md:max-w-2xl flex flex-col items-start justify-center text-left">
             {/* Headline */}
             <h1 className="font-display text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-normal leading-[1.1] tracking-tight text-text-title mb-6 max-w-xl text-left">

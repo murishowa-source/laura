@@ -143,8 +143,8 @@ export default function App() {
         id="app-header"
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled 
-            ? "bg-bg-primary/90 backdrop-blur-md border-b border-border-subtle py-4 shadow-sm" 
-            : "bg-transparent py-6"
+            ? "bg-bg-primary/90 backdrop-blur-md border-b border-border-subtle py-3 md:py-4 shadow-sm" 
+            : "bg-transparent py-3 md:py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -256,9 +256,9 @@ export default function App() {
       {/* HERO SECTION */}
       <section 
         id="inicio"
-        className="relative min-h-screen md:min-h-screen flex flex-col md:flex-row md:items-center md:justify-start overflow-hidden pt-0 md:pt-32 pb-16 md:pb-32 z-10 bg-bg-primary"
+        className="relative w-full min-h-screen md:min-h-screen flex flex-col md:flex-row md:items-center md:justify-start overflow-hidden pt-0 md:pt-32 pb-0 md:pb-32 z-10 bg-bg-primary"
       >
-        {/* DESKTOP BACKGROUND (md and up) */}
+        {/* ==================== DESKTOP HERO (md and up) ==================== */}
         <div className="absolute inset-0 z-0 hidden md:block pointer-events-none">
           <img 
             src={lauraHeroDesktopImage} 
@@ -272,20 +272,8 @@ export default function App() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary to-transparent z-1" />
         </div>
 
-        {/* MOBILE IMAGE CONTAINER (hidden on desktop) */}
-        <div className="w-full h-[70svh] relative md:hidden z-0 overflow-hidden">
-          <img 
-            src={lauraHeroMobileImage} 
-            alt="Psicóloga Laura Barbizan Barichello" 
-            className="w-full h-full object-cover object-[center_10%]"
-            referrerPolicy="no-referrer"
-          />
-          {/* Soft fade at the bottom of the photo to transition elegantly to the beige area */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-bg-primary to-transparent z-1 pointer-events-none" />
-        </div>
-
-        {/* Content Container (Perfectly positioned on both desktop and mobile) */}
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col pt-8 md:pt-0">
+        {/* Desktop Content Container */}
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 hidden md:flex flex-col">
           <div className="max-w-xl md:max-w-2xl flex flex-col items-start justify-center text-left">
             {/* Headline */}
             <h1 className="font-display text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-normal leading-[1.1] tracking-tight text-text-title mb-6 max-w-xl text-left">
@@ -306,6 +294,56 @@ export default function App() {
                 Agendar Sessão Inicial
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ==================== MOBILE HERO (sm / md:hidden) ==================== */}
+        <div className="md:hidden w-full flex flex-col bg-white">
+          {/* 1. PHOTO SECTION */}
+          <div className="w-full h-[70svh] relative z-0 overflow-hidden bg-bg-primary">
+            <img 
+              src={lauraHeroMobileImage} 
+              alt="Psicóloga Laura Barbizan Barichello" 
+              className="w-full h-full object-cover object-[center_top]"
+              referrerPolicy="no-referrer"
+            />
+            {/* Elegant bottom gradient fade to pure white */}
+            <div 
+              className="absolute inset-x-0 bottom-0 h-32 pointer-events-none z-10"
+              style={{
+                background: "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.85) 60%, #FFF 100%)"
+              }}
+            />
+          </div>
+
+          {/* 2. INDEPENDENT WHITE SECTION */}
+          <div className="w-full bg-white px-6 pt-6 pb-12 flex flex-col items-start text-left relative z-10">
+            {/* Title */}
+            <h1 className="font-display text-4xl font-normal leading-[1.1] tracking-tight text-text-title mb-4">
+              Um espaço de <span className="text-brand-accent italic font-normal text-glow block sm:inline">acolhimento.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-text-body text-sm leading-relaxed mb-6 max-w-md">
+              Psicoterapia para cuidar de você, com escuta, respeito e empatia.
+            </p>
+
+            {/* CTA Button */}
+            <a 
+              href="#agendar" 
+              className="w-full inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-brand-accent text-white font-semibold tracking-wide text-sm active:scale-95 transition-all duration-300 shadow-[0_4px_20px_rgba(186,84,49,0.15)] mb-6"
+            >
+              Agendar Sessão Inicial
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
+
+            {/* Faixa "Atendimento 100% online global" */}
+            <div className="w-full py-3 px-4 rounded-xl bg-bg-secondary/50 border border-border-subtle/30 flex items-center justify-center gap-2">
+              <Sparkles className="w-4 h-4 text-brand-accent/80 animate-pulse-gentle" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-title font-semibold text-center">
+                Atendimento 100% Online Global
+              </span>
             </div>
           </div>
         </div>

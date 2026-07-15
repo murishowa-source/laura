@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 @theme {
   --font-display: "Playfair Display", "Georgia", serif;
   --font-sans: "Plus Jakarta Sans", "Inter", sans-serif;
